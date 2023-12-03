@@ -10,9 +10,10 @@
 </head>
 <body>
 <div class="container" id="app">
-    <h1>Questionário - Predição de autismo</h1>
-    <p>Um questionário rápido de referenciação para os pais completarem sobre a sua criança (18 - 24 meses) com
-        preocupações sobre autismo.</p>
+    <h1>Questionário - Predição de Transtorno do Espectro Autista (TEA)</h1>
+    <br>
+    <p>Um questionário de encaminhamento rápido para os pais preencherem sobre seus filhos (18 a 24 meses) com preocupações sobre o autismo.</p>
+    <p>Para cada item, escolha a resposta que melhor se aplica ao seu filho:</p>
     <br>
     <div class="my-form">
         <h3>Responda as perguntas e informe os dados abaixo</h3>
@@ -114,7 +115,7 @@
             <label for="name">Nome:</label>
             <input type="text" v-model="myState.name" name="name" id="name" required>
             <br><br>
-            <label for="age">Idade:</label>
+            <label for="age">Idade (em meses):</label>
             <input type="number" step="any" v-model="myState.age" name="age" id="age" required>
 
             <label for="sex">Sexo:</label>
@@ -139,8 +140,10 @@
             </select>
             <pre v-if="false">{{myState}}</pre>
 
-            <!-- Submit button -->
-            <input type="submit" value="Enviar">
+            <br>
+            <div style="text-align: center;">
+                <input type="submit" value="Enviar">
+            </div>
         </form>
         <div id="search_area" v-if="myState.result !== ''">
             <p style="color: #453731;">

@@ -51,13 +51,13 @@ def predict(form: CriancaSchema):
     for answer in input_string.split(','):
         result_array.append(int(answer))
 
-    result_array.append(form.age)
+    result_array.append(form.age / 12)
     result_array.append(form.sex)
     result_array.append(form.jaundice)
     result_array.append(form.family_mem_with_ASD)
 
     my_tuple = tuple(result_array)
-    print(my_tuple)
+    # print(my_tuple)
     # print(len(my_tuple))
 
     # Carregando modelo
@@ -68,7 +68,7 @@ def predict(form: CriancaSchema):
         "name": form.name,
         "outcome": Model.preditor(modelo, my_tuple)
     }
-    print('outcome:' + str(paciente["outcome"]))
+    # print('outcome:' + str(paciente["outcome"]))
     return apresenta_crianca(paciente), 200
 
 
