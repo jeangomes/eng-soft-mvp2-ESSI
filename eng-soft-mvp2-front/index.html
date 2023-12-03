@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionário - Predição de autismo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="FormatValues.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+<div class="container" id="app">
+    <h1>Questionário - Predição de autismo</h1>
+    <p>Um questionário rápido de referenciação para os pais completarem sobre a sua criança (18 - 24 meses) com
+        preocupações sobre autismo.</p>
+    <br>
+    <div class="my-form">
+        <h3>Responda as perguntas e informe os dados abaixo</h3>
+        <form @submit.prevent="saveMyData" method="POST">
+            <fieldset>
+                <legend>Questão 1: Seu filho olha para você quando você chama o nome dele?</legend>
+                <label><input type="radio" name="A1" v-model="myState.A1" value="a"> Sempre</label>
+                <label><input type="radio" name="A1" v-model="myState.A1" value="b"> Habitualmente</label>
+                <label><input type="radio" name="A1" v-model="myState.A1" value="c"> Às vezes</label>
+                <label><input type="radio" name="A1" v-model="myState.A1" value="d"> Raramente</label>
+                <label><input type="radio" name="A1" v-model="myState.A1" value="e"> Nunca</label>
+            </fieldset>
+            <fieldset>
+                <legend>Questão 2: É fácil para você conseguir contato visual com seu filho?</legend>
+                <label><input type="radio" name="A2" v-model="myState.A2" value="a"> Muito fácil</label>
+                <label><input type="radio" name="A2" v-model="myState.A2" value="b"> Bastante fácil </label>
+                <label><input type="radio" name="A2" v-model="myState.A2" value="c"> Bastante difícil</label>
+                <label><input type="radio" name="A2" v-model="myState.A2" value="d"> Muito difícil</label>
+                <label><input type="radio" name="A2" v-model="myState.A2" value="e"> Impossível</label>
+            </fieldset>
+            <fieldset>
+                <legend>Questão 3: Seu filho aponta para indicar que quer alguma coisa? (ex: um brinquedo que está fora
+                    do alcance)
+                </legend>
+                <label><input type="radio" name="A3" v-model="myState.A3" value="a">Muitas vezes por dia</label>
+                <label><input type="radio" name="A3" v-model="myState.A3" value="b">Algumas vezes por dia</label>
+                <label><input type="radio" name="A3" v-model="myState.A3" value="c">Algumas vezes por semana</label>
+                <label><input type="radio" name="A3" v-model="myState.A3" value="d">Menos de uma vez por semana</label>
+                <label><input type="radio" name="A3" v-model="myState.A3" value="e">Nunca</label>
+            </fieldset>
+            <fieldset>
+                <legend>Questão 4: Seu filho aponta para compartilhar interesses com você? (ex: apontar para um cenário
+                    interessante)
+                </legend>
+                <label><input type="radio" name="A4" v-model="myState.A4" value="a">Muitas vezes por dia</label>
+                <label><input type="radio" name="A4" v-model="myState.A4" value="b">Algumas vezes por dia</label>
+                <label><input type="radio" name="A4" v-model="myState.A4" value="c">Algumas vezes por semana</label>
+                <label><input type="radio" name="A4" v-model="myState.A4" value="d">Menos de uma vez por semana</label>
+                <label><input type="radio" name="A4" v-model="myState.A4" value="e">Nunca</label>
+            </fieldset>
+            <fieldset>
+                <legend>Questão 5: Seu filho finge? (por exemplo, cuidar de bonecas, falar em um telefone de
+                    brinquedo)
+                </legend>
+                <label><input type="radio" name="A5" v-model="myState.A5" value="a">Muitas vezes por dia</label>
+                <label><input type="radio" name="A5" v-model="myState.A5" value="b">Algumas vezes por dia</label>
+                <label><input type="radio" name="A5" v-model="myState.A5" value="c">Algumas vezes por semana</label>
+                <label><input type="radio" name="A5" v-model="myState.A5" value="d">Menos de uma vez por semana</label>
+                <label><input type="radio" name="A5" v-model="myState.A5" value="e">Nunca</label>
+            </fieldset>
+            <fieldset>
+                <legend>Questão 6: Seu filho segue para onde você olha?</legend>
+                <label><input type="radio" name="A6" v-model="myState.A6" value="a">Muitas vezes por dia</label>
+                <label><input type="radio" name="A6" v-model="myState.A6" value="b">Algumas vezes por dia</label>
+                <label><input type="radio" name="A6" v-model="myState.A6" value="c">Algumas vezes por semana</label>
+                <label><input type="radio" name="A6" v-model="myState.A6" value="d">Menos de uma vez por semana</label>
+                <label><input type="radio" name="A6" v-model="myState.A6" value="e">Nunca</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Questão 7: Se você ou alguém da família estiver visivelmente chateado, seu filho mostra sinais
+                    de querer confortá-los? (por exemplo, acariciando o cabelo, abraçando)
+                </legend>
+                <label><input type="radio" name="A7" v-model="myState.A7" value="a">Sempre</label>
+                <label><input type="radio" name="A7" v-model="myState.A7" value="b">Habitualmente</label>
+                <label><input type="radio" name="A7" v-model="myState.A7" value="c">Às vezes</label>
+                <label><input type="radio" name="A7" v-model="myState.A7" value="d">Raramente</label>
+                <label><input type="radio" name="A7" v-model="myState.A7" value="e">Nunca</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Questão 8: Você descreveria as primeiras palavras do seu filho como:</legend>
+                <label><input type="radio" name="A8" v-model="myState.A8" value="a">Muito comuns</label>
+                <label><input type="radio" name="A8" v-model="myState.A8" value="b">Bastante comuns</label>
+                <label><input type="radio" name="A8" v-model="myState.A8" value="c">Ligeiramente incomuns</label>
+                <label><input type="radio" name="A8" v-model="myState.A8" value="d">Muito incomuns</label>
+                <label><input type="radio" name="A8" v-model="myState.A8" value="e">A minha criança não fala</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Questão 9: Seu filho usa gestos simples? (por exemplo, acenar adeus)?</legend>
+                <label><input type="radio" name="A9" v-model="myState.A9" value="a">Muitas vezes por dia</label>
+                <label><input type="radio" name="A9" v-model="myState.A9" value="b">Algumas vezes por dia</label>
+                <label><input type="radio" name="A9" v-model="myState.A9" value="c">Algumas vezes por semana</label>
+                <label><input type="radio" name="A9" v-model="myState.A9" value="d">Menos de uma vez por semana</label>
+                <label><input type="radio" name="A9" v-model="myState.A9" value="e">Nunca</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Questão 10: Seu filho olha para o nada sem nenhum propósito aparente?</legend>
+                <label><input type="radio" name="A10" v-model="myState.A10" value="a">Muitas vezes por dia</label>
+                <label><input type="radio" name="A10" v-model="myState.A10" value="b">Algumas vezes por dia</label>
+                <label><input type="radio" name="A10" v-model="myState.A10" value="c">Algumas vezes por semana</label>
+                <label><input type="radio" name="A10" v-model="myState.A10" value="d">Menos de uma vez por
+                    semana</label>
+                <label><input type="radio" name="A10" v-model="myState.A10" value="e">Nunca</label>
+            </fieldset>
+            <br><br>
+            <label for="name">Nome:</label>
+            <input type="text" v-model="myState.name" name="name" id="name" required>
+            <br><br>
+            <label for="age">Idade:</label>
+            <input type="number" step="any" v-model="myState.age" name="age" id="age" required>
+
+            <label for="sex">Sexo:</label>
+            <select v-model="myState.sex" name="sex" id="sex" required>
+                <option value="">selecione</option>
+                <option value="1">M</option>
+                <option value="0">F</option>
+            </select>
+            <br><br>
+            <label for="jaundice">Nasceu com icterícia:</label>
+            <select v-model="myState.jaundice" name="jaundice" id="jaundice" required>
+                <option value="">selecione</option>
+                <option value="1">Sim</option>
+                <option value="0">Não</option>
+            </select>
+            <br><br>
+            <label for="family_mem_with_ASD">Membro da família com histórico de TEA:</label>
+            <select v-model="myState.family_mem_with_ASD" name="family_mem_with_ASD" id="family_mem_with_ASD" required>
+                <option value="">selecione</option>
+                <option value="1">Sim</option>
+                <option value="0">Não</option>
+            </select>
+            <pre v-if="false">{{myState}}</pre>
+
+            <!-- Submit button -->
+            <input type="submit" value="Enviar">
+        </form>
+        <div id="search_area" v-if="myState.result !== ''">
+            <p style="color: #453731;">
+                Resultado:
+                <span v-if="myState.result">Há possíveis traços de TEA! Consideramos o encaminhamento da sua criança para uma avaliação multidisciplinar.</span>
+                <span v-else>Não há traços de TEA!</span>
+            </p>
+        </div>
+    </div>
+    <Transition name="fade">
+        <div id="loading_container" v-if="loadingData">
+            <div id="loading"></div>
+        </div>
+    </Transition>
+</div>
+
+<script type="module">
+    const {createApp, ref} = Vue
+
+    createApp({
+        setup() {
+            const loadingData = ref(false)
+            const initialState = {
+                A1: '',
+                A2: '',
+                A3: '',
+                A4: '',
+                A5: '',
+                A6: '',
+                A7: '',
+                A8: '',
+                A9: '',
+                A10: '',
+                name: '',
+                age: '',
+                sex: '',
+                jaundice: '',
+                family_mem_with_ASD: '',
+                allAnswers: [],
+                result: ''
+            };
+            const myState = ref({...initialState})
+
+            function resetForm() {
+                myState.value = {...initialState}
+            }
+
+            let formValid = false
+
+            const saveMyData = () => {
+                myState.value.allAnswers = []
+                for (let i = 1; i <= 10; i++) {
+                    const currentValue = myState.value['A' + i];
+                    let answer = '';
+                    if (currentValue !== '') {
+                        const validValues = (i === 10) ? ['a', 'b', 'c'] : ['c', 'd', 'e'];
+                        answer = validValues.includes(currentValue) ? 1 : 0;
+                    }
+                    myState.value.allAnswers.push(answer);
+                }
+                //console.log(myState.value.allAnswers)
+                formValid = myState.value.allAnswers.every(function (answer) {
+                    return answer !== '';
+                });
+
+                if (formValid) {
+                    loadingData.value = true
+                    postMyData(myState.value)
+                        .then((data) => {
+                            console.log(data);
+                            const {outcome} = data;
+                            myState.value.result = outcome;
+                        })
+                        .finally(() => {
+                            loadingData.value = false;
+                            //resetForm()
+                        });
+                } else {
+                    alert('Favor responder todas as questões!')
+                }
+            }
+            return {
+                currencyFormat,
+                myState,
+                saveMyData,
+                loadingData
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>
